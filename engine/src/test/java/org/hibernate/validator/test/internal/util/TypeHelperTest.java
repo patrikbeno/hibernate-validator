@@ -18,6 +18,8 @@
 package org.hibernate.validator.test.internal.util;
 
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.GenericDeclaration;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
@@ -35,6 +37,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import org.hibernate.validator.internal.util.TypeHelper;
+import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 
 import static org.hibernate.validator.internal.util.CollectionHelper.newArrayList;
 import static org.testng.Assert.assertEquals;
@@ -907,7 +910,7 @@ public class TypeHelperTest {
 	private static TypeVariable typeVariable(final GenericDeclaration declaration,
 											 final String name,
 											 final Type... bounds) {
-		return new TypeVariable() {
+		return new TypeVariable<GenericDeclaration>() {
 			@Override
 			public Type[] getBounds() {
 				if ( bounds == null || bounds.length == 0 ) {
@@ -925,6 +928,41 @@ public class TypeHelperTest {
 			public String getName() {
 				return name;
 			}
-		};
+
+            @Override
+            public AnnotatedType[] getAnnotatedBounds() {
+                throw new UnsupportedOperationException(); // todo implement this
+            }
+
+            @Override
+            public <T extends Annotation> T getAnnotation(Class<T> annotationClass) {
+                throw new UnsupportedOperationException(); // todo implement this
+            }
+
+            @Override
+            public Annotation[] getAnnotations() {
+                throw new UnsupportedOperationException(); // todo implement this
+            }
+
+            @Override
+            public <T extends Annotation> T[] getAnnotationsByType(Class<T> annotationClass) {
+                throw new UnsupportedOperationException(); // todo implement this
+            }
+
+            @Override
+            public <T extends Annotation> T getDeclaredAnnotation(Class<T> annotationClass) {
+                throw new UnsupportedOperationException(); // todo implement this
+            }
+
+            @Override
+            public <T extends Annotation> T[] getDeclaredAnnotationsByType(Class<T> annotationClass) {
+                throw new UnsupportedOperationException(); // todo implement this
+            }
+
+            @Override
+            public Annotation[] getDeclaredAnnotations() {
+                throw new UnsupportedOperationException(); // todo implement this
+            }
+        };
 	}
 }
