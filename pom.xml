@@ -81,8 +81,13 @@
     </modules>
 
     <properties>
-        <!-- see http://maven.apache.org/general.html -->
+        <jdk.home>c:/java/jdk8</jdk.home>
+        <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>${jdk.version}</maven.compiler.source>
+        <maven.compiler.target>${jdk.version}</maven.compiler.target>
+
+
         <checkstyle.header.file>src/main/build-config/java.header</checkstyle.header.file>
 
         <!-- Don't upgrade to 1.1.0 yet. Dependencies get copied to wrong location -->
