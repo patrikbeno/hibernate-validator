@@ -23,7 +23,6 @@
     <version>5.0.1.Final</version>
     <packaging>pom</packaging>
 
-    <name>Hibernate Validator Aggregator</name>
     <url>http://validator.hibernate.org</url>
     <description>Aggregator of the Hibernate Validator modules.</description>
 
@@ -570,12 +569,14 @@
     <profiles>
         <profile>
             <id>docs</id>
+<!--
             <activation>
                 <property>
                     <name>disableDocumentationBuild</name>
                     <value>!true</value>
                 </property>
             </activation>
+-->
             <modules>
                 <module>documentation</module>
             </modules>
