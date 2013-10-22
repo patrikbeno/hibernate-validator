@@ -583,12 +583,14 @@
         </profile>
         <profile>
             <id>dist</id>
+<!--
             <activation>
                 <property>
                     <name>disableDistributionBuild</name>
                     <value>!true</value>
                 </property>
             </activation>
+-->
             <modules>
                 <module>distribution</module>
             </modules>
